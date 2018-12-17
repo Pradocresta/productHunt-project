@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="POST" action="{% url 'create' %}" enctype="multipart/form-data">
+
+  <div class="card person-card mx-auto col-md-4 ">
+    <!--gender image-->
+    <img id="img_sex" class="person-img"
+    src="https://visualpharm.com/assets/217/Life%20Cycle-595b40b75ba036ed117d9ef0.svg"/>
+    <h2 class="card-title">Create Product</h2>
+    {% csrf_token %}
+    <!-- first row (on medium screen)-->
+    <div class="row">
+      <div class="form-group col-md-10 mx-auto" style="">
+        <label class="col-form-label">Title :</label>
+        <input type="text" name="title" class="form-control" placeholder="Title">
+        <label class="col-form-label">Body :</label>
+        <input type="textbox" name="body" class="form-control" placeholder="Type content here.">
+        <label class="col-form-label">URL :</label>
+        <input type="text" name="url" class="form-control" placeholder="URL">
+        <label class="col-form-label">Icon :</label>
+        <input type="file" name="icon" class="form-control" placeholder="">
+        <label class="col-form-label">Image :</label>
+        <input type="file" name="image" class="form-control" placeholder="">
+        <br />
+        <input class="btn btn-primary btn-lg btn-block" type="submit" value="Create Products" />
+        {% if error %}
+        <br />
+        <p class="alert alert-light" style="text-align:center;">{{ error }}</p>
+        <br />
+        {% endif  %}
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock %}
